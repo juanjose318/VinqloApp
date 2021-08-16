@@ -1,0 +1,117 @@
+.profile-banner {
+    background: #021a68;
+    width: 100%;
+    height: 200px;
+    border-radius: 25px 25px 0px 0px;
+    position: relative;
+}
+
+.card {
+    padding: 20px 35px;
+    border: none;
+    border-radius: 0px 0px 25px 25px;
+}
+
+.card .profile-img {
+    text-align: center;
+    margin-top: -95px;
+}
+
+.card .profile-img img {
+    width: 130px;
+    border-radius: 50%;
+    height: 130px;
+}
+
+.profile-detail a {
+    display: block;
+    margin-bottom: 10px;
+}
+
+::ng-deep .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    align-items: center !important;
+    background: #fff;
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+}
+
+::ng-deep .nav-item {
+    width: 25% !important;
+    text-align: center;
+}
+
+::ng-deep .nav-tabs .nav-link {
+    border: none;
+}
+
+::ng-deep .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    border-bottom: 1px solid #91009b !important;
+    color: #021a68 !important;
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+}
+
+::ng-deep .dropdown-toggle::after {
+    display: none !important;
+}
+
+::ng-deep .tab-content {
+    margin-top: 0px !important;
+}
+
+.main-profile-card {
+    border-radius: 0px 0px 15px 15px !important;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.card .client-card {
+    border-radius: 20px;
+    padding: 15px;
+    margin: 10px 0px;
+}
+
+.card .client-card .client-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.client-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.client-footer div ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.client-footer div ul li {
+    margin-left: 20px;
+}
+
+.client-post img {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-detail a img {
+    margin-right: 7px;
+}
+
+.nav-tabs {
+    margin-bottom: 15px;
+}

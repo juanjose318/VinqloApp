@@ -1,0 +1,62 @@
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card py-4 shadow my-5">
+                    <div class="card-body text-center">
+                        <div class="logo mb-4">
+                            <h5 class="text-purple">Welcome to</h5>
+                            <img src="../../assets/images/logo-01.png" class="img-fluid" alt="" />
+                        </div>
+                        <div *ngIf="errors" class="alert alert-danger">
+                            <div *ngFor="let error of errors">{{ error }}</div>
+                        </div>
+                        <form autocomplete="off" [formGroup]="authForm" (ngSubmit)="submitForm()">
+                            <div class="input-field" *ngIf="f.firstName">
+                                <input formControlName="firstName" type="text" class="form-control custom-border" placeholder="First Name" />
+                                <errors [control]="f.firstName"></errors>
+                            </div>
+                            <div class="input-field" *ngIf="f.lastName">
+                                <input type="text" formControlName="lastName" class="form-control custom-border" placeholder="Last Name" />
+                                <errors [control]="f.lastName"></errors>
+                            </div>
+                            <div class="input-field">
+                                <input formControlName="email" type="email" class="form-control custom-border" placeholder="Email" />
+                                <errors [control]="f.email"></errors>
+                            </div>
+                            <div class="input-field" *ngIf="f.campus">
+                                <ng-select formControlName="campus" (change)="onCampusChange()" [clearable]="false" [items]="campuses" bindValue="slug" bindLabel="name" placeholder="Campus" class="selectpicker custom-border">
+                                </ng-select>
+                                <errors [control]="f.campus"></errors>
+                            </div>
+                            <div class="input-field" *ngIf="f.degree">
+                                <ng-select formControlName="degree" [clearable]="false" [items]="degrees" bindValue="slug" bindLabel="name" placeholder="Degree" class="selectpicker custom-border">
+                                </ng-select>
+                                <errors [control]="f.degree"></errors>
+                            </div>
+                            <div class="input-field">
+                                <input formControlName="password" type="password" class="form-control custom-border" placeholder="Password" />
+                                <errors [control]="f.password"></errors>
+                            </div>
+                            <div class="input-field" *ngIf="f.confirmPassword">
+                                <input formControlName="confirmPassword" type="password" class="form-control custom-border" placeholder="Confirm Password" />
+                                <errors [control]="f.confirmPassword"></errors>
+                            </div>
+                            <a [routerLink]="['/auth/forgot']">Forgot Pasword</a>
+                            <button class="btn mb-2 btn-main" [disabled]="!authForm.valid" type="submit">
+
+                {{ isLogin ? "Log In" : "Sign Up"}}
+              </button>
+
+                            <span>Or </span>
+                            <a href="javascript:void(0)" class="main-color" [routerLink]="['/auth', isLogin ? 'register' : 'login']">{{ isLogin ? "Sign Up" : "Log In" }}</a
+              >
+
+                        </form>
+                        {{ selectedCampus }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

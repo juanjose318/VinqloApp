@@ -1,0 +1,35 @@
+<div class="card shadow-sm p-4 my-5 main-profile-card">
+
+  <div class="client-card shadow-sm" *ngFor="let post of posts">
+      <div class="client-header">
+          <div>
+              <h6 [routerLink]="['/post', post.slug]" class="main-color mb-0" style="cursor: pointer">
+                  {{ post.title }}
+              </h6>
+              <small class="text-muted" [routerLink]="['/user-profile', post.by.email]">{{  post.by.firstName + " " + post.by.lastName }}
+        {{ post.time | date: "long" }}</small>
+
+    </div>
+  </div>
+  <p class="my-4">{{ post.body }}</p>
+  <!-- <div class="client-post">
+    <img
+      *ngIf="post.image"
+      [src]="post.image | image"
+      class="img-fluid"
+      alt=""
+    />
+  </div> -->
+  <div class="client-footer">
+    <div>
+      <span class="text-purple" *ngFor="let tag of post.tags; let i = index"
+        >{{ tag }} <span *ngIf="i + 1 !== post.tags.length">, </span>
+      </span>
+    </div>
+  </div>
+</div>
+<no-content *ngIf="!isLoader && posts.length === 0" [label]="'No Posts here'" ></no-content>
+<a align="center" style="margin-top: 10px;" href="javascript:void(0)" *ngIf="!isLoader && hasNextPage" (click)="onLoadMoreClick()" > Load More <i class="fas fa-ellipsis-h"></i>
+</a>
+<loader *ngIf="isLoader"></loader>
+</div>

@@ -1,0 +1,84 @@
+<section>
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-md-3">
+        <div class="community">
+          <h5 class="text-purple">Create community</h5>
+          <a href="javascript:void(0)" (click)="communityCreate.open()"
+            ><i class="fa main-color fa-plus-circle" aria-hidden="true"></i
+          ></a>
+        </div>
+        <div class="py-3">
+          <div class="campus">
+            <h5 class="text-purple">Category</h5>
+            <ul class="campus-list">
+              <li *ngFor="let category of categories">
+                <a
+                  class="mt-2"
+                  href="javascript:void(0)"
+                  [routerLink]="['/category', category.slug]"
+                  >{{ category.name }}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="single-post-card p-4 card shadow-sm">
+          <div class="back">
+            <a href="javascript:void(0)" appBackButton><i class="fas text-purple fa-chevron-left"></i
+            ></a>
+          </div>
+          <div class="single-post">
+            <div class="client-header">
+              <div>
+                <h6 class="main-color mb-0">{{ community?.name }}</h6>
+                <small class="text-muted" [routerLink]="['/user-profile/'+community.by.email]">{{ community?.by?.firstName }} {{ community?.by?.lastName }}</small>
+              </div>
+              <div>
+                <button class="btn btn-join" [disabled]="joinSlug === community?.slug" (click)="onJoinClick(community.slug,community.isJoined)">
+                  <i class="fa fa-link icons-color" aria-hidden="true" ></i>
+                  <span class="main-color"   >{{community?.isJoined?' leave':' join'}}</span>
+                </button>
+              </div>
+              <div ngbDropdown class="d-inline-block">
+                <button class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                  <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button ngbDropdownItem>Report</button>
+                </div>
+              </div>
+            </div>
+            <p class="my-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
+              veritatis.
+            </p>
+            <span class="main-color" (click)="usersListing.openEntity(community)"><i class="fa icons-color fa-users" aria-hidden="true"></i>{{ community?.membersCount }}</span>
+          </div>
+        </div>
+        <div class="search-field my-3">
+          <input
+            [(ngModel)]="searchQuery"
+            type="text"
+            class="form-control shadow-sm"
+            placeholder="Search by name"
+          />
+          <img
+            src="../../../assets/images/search-solid.svg"
+            width="30px"
+            alt=""
+          />
+        </div>
+
+        <post-list
+          [searchQuery]="searchQuery"
+          [url]="postByCommunity + slug"
+        ></post-list>
+      </div>
+    </div>
+  </div>
+</section>
+<app-community-create #communityCreate></app-community-create>
+<app-user-listing #usersListing></app-user-listing>

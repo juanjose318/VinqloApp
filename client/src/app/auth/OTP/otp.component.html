@@ -1,0 +1,28 @@
+<section>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card py-4 shadow my-5">
+            <div class="card-body text-center ">
+              <div class="logo mb-4">
+                <h5 class="text-purple">Welcome to</h5>
+                <img src="../../assets/images/logo-01.png" class="img-fluid" alt=""/>
+              </div>
+              <p style ="font-size: 30px; font-weight: 600; margin-top: 0;">Enter verification code</p>
+              <div class="row mt-3 d-flex justify-content-center" >
+                <div class="col-md-6 text-center">
+                  <ngx-otp-input   (fill)="onOtpChange($event)" [config]="otpInputConfig" ></ngx-otp-input>
+                </div>
+              </div>
+              <div class="row mt-3 d-flex justify-content-center" >
+                <div class="col-md-6 text-center">
+                  <button [disabled]="isResendDisable"  (click)="onResendEmail()" class="btn btn-link text-center">Resend Email</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

@@ -1,0 +1,33 @@
+<section>
+  <div class="container">
+    <div class="row" *ngIf="!isLoader">
+      <div class="col-md-12">
+        <div class="profile-banner"></div>
+      </div>
+      <div class="col-md-4" >
+        <div class="card">
+          <div class="profile-img">
+            <img (click)="showImage.open()" [src]="user.image | image" alt="" />
+            <h3>{{user.firstName}} {{user.lastName}}</h3>
+            <p class="text-purple my-3">{{user.bio ? user.bio : '-' }}</p>
+          </div>
+          <div class="profile-detail">
+            <p>{{user.degree.name}} at {{user.campus.name}}</p>
+            <a href="javascript:void(0)"><img src="../../../assets/images/instagram-brands.svg" width="20px" alt="" />{{user.phone}}</a>
+            <a #email href="javascript:void(0)"><img src="../../../assets/images/phone-square-alt-solid.svg" width="20px" alt="" />{{user.email}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" *ngIf="!isLoader">
+        <div class="row">
+          <div class="col-md-12">
+            <post-list [url]="postByUser" [email]="user.email"></post-list>
+          </div>
+        </div>
+    </div>
+    </div>
+    <loader *ngIf="isLoader"></loader>
+  </div>
+</section>
+
+<app-show-image [imageUrl]="user.image" #showImage></app-show-image>

@@ -1,0 +1,11 @@
+.card {
+  border: none;
+  border-radius: 15px;
+  padding: 30px;
+}
+.community-detail{
+  width: 40%;
+}
+.community-status{
+  width: 33%;
+}

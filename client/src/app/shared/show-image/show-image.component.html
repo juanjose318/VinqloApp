@@ -1,0 +1,11 @@
+<ng-template #content >
+  <div class="modal-header">
+    <h4 class="modal-title text-purple" id="modal-basic-title">Profile Picture</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img [src]="imageUrl | image" alt="" />
+  </div>
+</ng-template>

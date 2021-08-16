@@ -1,0 +1,44 @@
+<header>
+    <nav [ngClass]="isAdmin ? 'bg-dark' : 'bg-white'">
+        <a class="nav-main" [routerLink]="['/']"   href="javascript:void(0)"><img src="../../assets/images/logo-01.png" alt="" /></a>
+        <ul class="ml-auto mb-0 nav-list">
+            <app-notification *ngIf="!isAdmin"></app-notification>
+            <li *ngIf="!isAdmin" class="nav-link">
+                <a [routerLink]="['/feed']" href="javascript:void(0)"><i class="fas fa-home"></i
+        ></a>
+            </li>
+            <li class="nav-link" *ngIf="user" ngbDropdown>
+                <a class="user-dropdown" href="javascript:void(0)" ngbDropdownToggle>
+                  <img [src]="user.image | image" alt="" />
+                </a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-top: 8px !important">
+          <button ngbDropdownItem routerLink="/profile">
+            <div class="d-flex align-items-center">
+              <div class="user-img">
+                <img [src]="user.image | image" alt="" />
+              </div>
+              <h6 class="mb-0 ml-2">
+                {{ user.firstName + " " + user.lastName }}
+              </h6>
+            </div>
+          </button>
+          <button ngbDropdownItem (click)="onLogoutClick()">
+            <i class="fas fa-sign-out mr-2"></i>Logout
+          </button>
+        </div>
+      </li>
+      <li class="nav-link" *ngIf="!isAdmin" >
+        <a class="accordion-toggle collapsed" (click)="collapse.toggle()" href="javascript:void(0)"></a>
+        <div style="position: absolute" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="collapse custom-align accordian-main">
+          <div >
+            <div class="accordian-menu" >
+              <div class="accordian-list" *ngFor="let category of categories" [routerLink]="['/category',category.slug]"   (click)="collapse.toggle()">
+                <span style="cursor: pointer;" class="main-color" ><i [ngClass]="category.icon"></i> {{category.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>

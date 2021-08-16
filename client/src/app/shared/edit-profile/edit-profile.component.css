@@ -1,0 +1,13 @@
+.input-field ng-select,
+.input-field textarea,
+fieldset input {
+  border-left: 1px solid #1105c0 !important;
+  border-bottom: 1px solid #1105c0 !important;
+  border-top: 0px !important;
+  border-right: 0px !important;
+  border-radius: 0px !important;
+  color: #1105c0 !important;
+}
+::ng-deep.ng-select .ng-select-container {
+  border: 0px !important;
+}

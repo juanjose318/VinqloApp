@@ -1,0 +1,118 @@
+.head {
+  display: flex;
+  padding: 0.5rem;
+  color: #fff;
+  background: #021A68;
+  /* position: fixed;
+  width: 20rem; */
+}
+.nav-link {
+  padding: 0 0rem !important;
+  font-size: 26px;
+  color: #444444;
+}
+
+.navbar-nav .active>.nav-link {
+  color: #021A68;
+}
+
+.foot {
+  background: #171717;
+
+}
+.read{
+  background: rgba(220, 253, 254, 0.8);
+}
+.read:hover{
+  background-color: rgb(186, 248, 250) !important;
+}
+.read .media p{
+
+  color: #021A68 !important;
+}
+.head span {
+  /* text-transform: uppercase; */
+  font-size: 1.25rem;
+}
+.head a {
+  margin-left: auto;
+  display: flex;
+  padding: 0.5rem;
+  color: #fff !important;
+  font-size: 12px;
+}
+.dropdown-menu {
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 20rem;
+  height: 300px;
+  background-color:#fff !important;
+  border: none;
+  box-shadow: rgb(0 0 0) 3px 5px 25px -10px !important;
+}
+.media{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding-bottom: .8rem;
+  display: block !important;
+}
+.media a{
+  display: flex;
+    align-items: center;
+}
+.dropdown-toggle::after {
+  display:none;
+}
+.media p{
+  font-size: 13px;
+  color: #021A68;
+}
+.dropdown-item{
+  padding: 0.5rem;
+  white-space: pre-wrap;
+  cursor: pointer;
+}
+.dropdown-item:hover{
+  background-color: rgb(186, 248, 250) !important;
+}
+.w-17{
+  /* width: 20rem; */
+  background-color: transparent;
+  height: 250px;
+  border: none;
+  overflow-y: auto;
+  padding-left: 0px;
+
+}
+.user-image{
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  /* margin-right: 20px; */
+}
+.user-image img{
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+}
+.unreadCount {
+  font-size: 14px;
+  background: #93C4E8;
+  border-radius: 50%;
+  padding: 4px;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  line-height: 8px;
+  font-size: 12px;
+  text-align: center;
+  top: 2px;
+  right: -10px;
+}
+@media only screen and (max-width: 768px){
+  .dropdown-menu {
+    position: absolute;
+    width: 16rem;
+    height: 270px;
+    margin-left: -113px;
+}
+}

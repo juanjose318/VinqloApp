@@ -1,0 +1,46 @@
+
+  <div class="card shadow-sm p-3">
+    <div class="client-card shadow-sm" *ngFor="let community of communities">
+      <div class="client-header">
+        <div class="community-detail">
+          <a [routerLink]="['/community',community.slug]" ><h6 class="main-color mb-0">{{community.name}}</h6></a>
+          <small class="text-muted" style="cursor: pointer;" [routerLink]="['/user-profile/'+community.by.email]">{{community.by.firstName + ' ' + community.by.lastName  }} </small>
+        </div>
+     
+          <div class="community-status" *ngIf="isJoin && currentUser.email!==community.by.email">
+            <div *ngIf="!community.isJoined">
+              <button class="btn btn-join" [disabled]="joinSlug === community.slug" (click)="onJoinClick(community.slug,community.isJoined)">
+                <i class="fa fa-link icons-color" aria-hidden="true" ></i><span class="main-color"> join</span>
+              </button>
+            </div>
+            <div *ngIf="community.isJoined">
+              <button class="btn btn-join" [disabled]="joinSlug === community.slug" (click)="onJoinClick(community.slug,community.isJoined)">
+                <i class="fa fa-link icons-color" aria-hidden="true" ></i><span class="main-color"> leave</span>
+              </button>
+            </div>
+          </div>
+ 
+
+        <div *ngIf="currentUser.email!==community.by.email" ngbDropdown class="d-inline-block">
+          <button
+            class="btn"
+            id="dropdownBasic1"
+            ngbDropdownToggle
+          >
+            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="report.open(2, community.slug)">Report Community</button>
+          </div>
+        </div>
+      </div>
+      <p class="my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, veritatis.
+      </p>
+      <span class="main-color" style="cursor: pointer;" (click)="usersListing.openEntity(community)" ><i class="fa icons-color fa-users" aria-hidden="true" ></i> {{community.membersCount}}  </span>
+    </div>
+    <a align="center" style="margin-top: 10px;" href="javascript:void(0)" *ngIf="!isLoader && hasNextPage" (click)="onLoadMoreClick()"> Load More <i class="fas fa-ellipsis-h"></i> </a>
+    <loader *ngIf="isLoader"></loader>
+    <no-content *ngIf="!isLoader && communities.length === 0" [label]="'No communities created yet.'"></no-content>
+  </div>
+<app-create-report #report></app-create-report>
+<app-user-listing #usersListing></app-user-listing>

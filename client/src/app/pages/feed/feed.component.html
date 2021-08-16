@@ -1,0 +1,102 @@
+<section>
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-md-12">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" (navChange)="onNavChange()" class="nav-tabs">
+          <li [ngbNavItem]="1">
+            <a ngbNavLink
+              ><img
+                src="../../assets/images/home.svg"
+                class="mr-2"
+                width="20px"
+                alt=""
+              />
+              Feed</a
+            >
+            <ng-template ngbNavContent>
+              <div class="row py-3">
+                <div class="col-md-8">
+                  <div class="search-field">
+                    <input type="text" [(ngModel)]="searchQuery" class="form-control shadow-sm" placeholder="Search by name . . ." />
+                    <img src="../../../assets/images/search-solid.svg" width="30px" alt="" />
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <button class=" btn btn-post shadow-sm main-color btn-block rounded-pill bg-white"
+                    (click)="create.open()"> Create Post <i class="fa icons-color fa-plus"></i>
+                  </button>
+                </div>
+                <div class="col-md-2">
+                  <ng-select [clearable]="false" class="rounded-pill shadow-sm" [items]="sortTypes" bindLabel="name" bindValue="id" [(ngModel)]="sortType" class=" btn btn-post shadow-sm main-color btn-block rounded-pill bg-white" >
+
+                  </ng-select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 my-3">
+                  <post-list #postList  [type]="sortType" [searchQuery]="searchQuery" [url]="feedpath" ></post-list>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <a ngbNavLink ><img src="../../assets/images/explore.svg" class="mr-2" width="20px" alt="" />Academics</a >
+            <ng-template ngbNavContent>
+              <div class="row py-3">
+                <div class="col-md-12">
+                  <div class="search-field">
+                    <input
+                      type="text"
+                      [(ngModel)]="searchQuery"
+                      class="form-control shadow-sm"
+                      placeholder="Search by community name ..."
+                    />
+                    <img
+                      src="../../../assets/images/search-solid.svg"
+                      width="30px"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="community">
+                    <h5 class="text-purple">Create community</h5>
+                    <a
+                      href="javascript:void(0)"
+                      (click)="communityCreate.open()"
+                      ><i
+                        class="fa main-color fa-plus-circle"
+                        aria-hidden="true"
+                      ></i
+                    ></a>
+                  </div>
+                  <div class="campus">
+                    <h5 class="text-purple">Campus</h5>
+                    <div class="campus-list">
+                      <a class="mt-2" href="javascript:void(0)">{{
+                        user.campus.name
+                      }}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-9">
+                  <div class="community">
+                    <h5 class="text-purple">{{ user.degree.name }}</h5>
+                  </div>
+                  <app-community-list
+                    [searchQuery]="searchQuery"
+                    [url]="academicesPath"
+                  ></app-community-list>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<post-create #create (success)="onSuccessPost($event)"></post-create>
+<app-community-create #communityCreate></app-community-create>

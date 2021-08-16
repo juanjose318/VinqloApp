@@ -1,0 +1,84 @@
+<ng-template #content>
+  <div class="modal-header">
+    <h4 class="modal-title text-purple" id="modal-basic-title">Create Post</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div [formGroup]="addPostForm">
+      <div class="form-group">
+        <div class="input-field">
+          <label for="">Select Community </label>
+          <ng-select
+            formControlName="community"
+            [items]="commuities"
+            [clearable]="false" 
+            placeholder="Community"
+            bindValue="slug"
+            bindLabel="name"
+          ></ng-select>
+          <errors [control]="f.community"></errors>
+        </div>
+        <div class="input-field mt-4">
+          <label for=""> Title</label>
+          <input
+            type="text"
+            formControlName="title"
+            formControlName="title"
+            class="form-control custom-border"
+            placeholder="Title"
+          />
+          <errors [control]="f.title"></errors>
+        </div>
+        <div class="input-field">
+          <label for=""> Body </label>
+          <textarea
+            formControlName="body"
+            formControlName="body"
+            name=""
+            class="form-control"
+            placeholder="What do you want to share"
+            id=""
+            cols="30"
+            rows="3"
+          ></textarea>
+          <errors [control]="f.body"></errors>
+        </div>
+        <fieldset class="form-group form-taglist mt-4">
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="tag"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Enter tags"
+            (keyup.enter)="onAddTag()"
+          />
+          <div class="tag-list">
+            <span
+              *ngFor="let tagValue of f.tags.value; let i = index"
+              style="background-color: #dafdfe"
+              class="tag-default tag-pill"
+            >
+              <i class="fa fa-close" (click)="onRemoveTag(i)"></i>
+              {{ tagValue }}
+            </span>
+            <button (click)="onAddTag()" class="btn btn-add-tag"><i class="fa icons-color fa-plus"></i></button>
+          </div>
+        </fieldset>
+        <div class="input-field">
+          <label for=""> Upload Image</label>
+
+          <upload-img [control]="f.image"></upload-img>
+        </div>
+        <button
+          class="btn mb-2 btn-main"
+          [disabled]="!addPostForm.valid || isLoader"
+          (click)="onPost()"
+        >
+          {{isLoader ? 'Posting': 'Post'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

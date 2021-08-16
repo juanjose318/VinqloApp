@@ -1,0 +1,70 @@
+<div class="col-md-12 mb-5">
+  <div class="card card-table mt-5 pl-3 shadow-sm">
+    <h4 class="modal-title text-purple" id="modal-basic-title">Reports</h4>
+  </div>
+</div>
+<div class="row mx-0 my-4">
+  <div class="col-md-9">
+    <div class="search-field">
+      <input
+        [(ngModel)]="searchQuery"
+        type="text"
+        class="form-control shadow-sm"
+        placeholder="Search by Name"
+        (ngModelChange)="get()"
+      />
+      <img src="../../../assets/images/search-solid.svg" width="30px" alt="" />
+    </div>
+  </div>
+  <div class="col-md-3">
+    <ng-select
+      [clearable]="false"
+      [(ngModel)]="status"
+      [items]="statuses"
+      [clearable]="false" 
+      bindValue="id"
+      bindLabel="name"
+      (change)="get()"
+    ></ng-select>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="card shadow-sm pb-3 card-table">
+    <div class="row">
+      <div class="col-md-12 px-5">
+        <div class="card shadow-sm card-accordian">
+          <ng-select [clearable]="false" [(ngModel)]="reportType" [items]="reportTypes" bindValue="id" bindLabel="name" (change)="get()" ></ng-select>
+        </div>
+      </div>
+
+      <div class="col-md-12 px-5">
+        <div *ngIf="!isLoader">
+          <div
+            *ngFor="let report of reports"
+            class="card shadow-sm my-2 card-table"
+          >
+            <div class="p-4">
+              <h4 class="main-color mb-4">
+                {{ report.by.firstName }} {{ report.by.lastName }}
+              </h4>
+              <h6>Reason</h6>
+              <p>{{ report.body }}</p>
+            </div>
+            <div class="card-footer">
+
+              <a href="javascript:void(0)" class="mr-4" (click)="deleteReport(report.slug)" ><img src="../../../assets/images/trash-alt-solid.svg" width="20px"  alt="" /> &nbsp; Delete report</a >
+              <span *ngIf="reportType==0"><a href="javascript:void(0)" class="mr-4" (click)="deactivateReport(report.slug,report.post.status)"><img src="../../../assets/images/Path 82.svg" width="20px" alt="" /> &nbsp; {{report.post.status==1?'De-Activate':'Activate'}} {{reportTypes[reportType].name}} </a ></span>
+              <span *ngIf="reportType==1"><a href="javascript:void(0)" class="mr-4" (click)="deactivateReport(report.slug,report.user.status)"><img src="../../../assets/images/Path 82.svg" width="20px" alt="" /> &nbsp; {{report.user.status==1?'De-Activate':'Activate'}} {{reportTypes[reportType].name}} </a ></span>
+              <span *ngIf="reportType==2"><a href="javascript:void(0)" class="mr-4" (click)="deactivateReport(report.slug,report.community.status)"><img src="../../../assets/images/Path 82.svg" width="20px" alt="" /> &nbsp; {{report.community.status==1?'De-Activate':'Activate'}} {{reportTypes[reportType].name}} </a ></span>
+
+              <span *ngIf="reportType==0"><a href="javascript:void(0)" class="mr-4" (click)="addStrike(report.post.by.strikes,report.slug,report.post.by.email)"><img src="../../../assets/images/phone-square-alt-solid.svg" width="20px" alt=""/>({{report.post.by.strikes}}) Add strike to user</a></span>
+              <span *ngIf="reportType==1"><a href="javascript:void(0)" class="mr-4" (click)="addStrike(report.user.strikes,report.slug,report.user.email)"><img src="../../../assets/images/phone-square-alt-solid.svg" width="20px" alt=""/>({{report.user.strikes}}) Add strike to user</a></span>
+              <span *ngIf="reportType==2"><a href="javascript:void(0)" class="mr-4" (click)="addStrike(report.community.by.strikes,report.slug,report.community.by.email)"><img src="../../../assets/images/phone-square-alt-solid.svg" width="20px" alt=""/>({{report.community.by.strikes}}) Add strike to user</a></span>
+            </div>
+          </div>
+        </div>
+        <loader *ngIf="isLoader"></loader>
+      </div>
+    </div>
+  </div>
+</div>

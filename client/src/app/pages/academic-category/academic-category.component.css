@@ -1,0 +1,58 @@
+.search-field {
+  position: relative;
+}
+.search-field input {
+  border: none;
+  border-radius: 30px;
+  padding-left: 50px;
+}
+.search-field img {
+  position: absolute;
+  top: 9px;
+  left: 13px;
+  width: 22px;
+}
+.card-table {
+  border-radius: 20px;
+  border: none;
+}
+.custom-width {
+  width: 96%;
+  top: 49px;
+  border-radius: 0px 0px 20px 20px;
+}
+.card-accordian {
+  border-radius: 30px;
+  border: none;
+  padding: 10px 19px;
+  margin: 20px 0px;
+}
+
+::ng-deep .ng-select.ng-select-single .ng-select-container {
+  border: none;
+  border-radius: 30px;
+}
+.card-campus{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 30px;
+    padding: 15px 26px 8px 26px;
+    margin: 10px 0px;
+}
+.card-campus a h4{
+  font-size: 20px;
+}
+.btn-plus{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: #021a68;
+}
+.ng-select{
+  cursor: pointer;
+}
+::ng-deep .ng-select .ng-select-container:hover {
+  box-shadow: none !important;
+  
+}

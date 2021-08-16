@@ -1,0 +1,194 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div *ngIf="!isLoader" class="col-md-12">
+        <div *ngxPermissionsOnly="[userType.user]" class="single-post-card card shadow-sm">
+          <div class="back">
+            <a href="javascript:void(0)" appBackButton>
+              <i class="fas text-purple fa-chevron-left"></i
+            ></a>
+          </div>
+          <div *ngxPermissionsOnly="[userType.user]" class="single-post">
+            <div class="client-header">
+              <div>
+                <h6 class="main-color mb-0" [routerLink]="['/community',postData.community.slug]">{{ postData.community.name }}</h6>
+                <small class="text-muted" [routerLink]="['/user-profile/'+postData.community.by.email]">{{postData.community.by.firstName}} {{postData.community.by.lastName}}</small>
+              </div>
+              <div>
+
+                <button class="btn btn-join" [disabled]="joinSlug === postData.community.slug" (click)="onJoinClick(postData.community.slug,postData.community.isJoined)">
+                  <i class="fa fa-link icons-color" aria-hidden="true" ></i>
+                  <span class="main-color"   >{{postData.community.isJoined?' leave':' join'}}</span>
+
+                </button>
+              </div>
+              <div  ngbDropdown class="d-inline-block">
+                <button class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                  <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button
+                    ngbDropdownItem
+                    (click)="report.open(2, postData.community.slug)"
+                  >
+                    Report Community
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p class="my-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
+              veritatis.
+            </p>
+            <span class="main-color" (click)="listOfUser.openEntity(postData.community)"><i class="fa icons-color fa-users" aria-hidden="true"></i>{{ postData.community.membersCount }}</span>
+          </div>
+        </div>
+        <div class="meriDiv">
+          <div class="client-card p-5 card mt-4 shadow-sm">
+            <div class="client-header">
+              <div>
+                <h6 class="main-color mb-0">{{ postData.title }}</h6>
+                <small class="text-muted" [routerLink]="['/user-profile', postData.by.email]"
+                  >{{ postData.by.firstName }} {{ postData.by.lastName }}
+                  {{ postData.time | date: "short" }}</small
+                >
+              </div>
+
+              <div *ngxPermissionsOnly="[userType.user]" ngbDropdown class="d-inline-block">
+                <button class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                  <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button
+                    ngbDropdownItem
+                    (click)="report.open(0, postData.slug)"
+                  >
+                    Report Post
+                  </button>
+                  <button
+                    ngbDropdownItem
+                    (click)="report.open(1, postData.by.email)"
+                  >
+                    Report User
+                  </button>
+                  <button
+                    ngbDropdownItem
+                    (click)="report.open(2, postData.community.slug)"
+                  >
+                    Report Community
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p class="my-4">{{ postData.body }}</p>
+            <div class="client-post">
+              <img
+                *ngIf="postData.image"
+                [src]="postData.image | image"
+                alt=""
+                class="img-fluid"
+                alt=""
+              />
+            </div>
+            <div class="client-footer">
+              <div>
+                <span
+                  class="text-purple"
+                  *ngFor="let tag of postData.tags; let i = index"
+                  >{{ tag }}
+                  <span *ngIf="i + 1 !== postData.tags.length">, </span>
+                </span>
+              </div>
+              <div *ngxPermissionsOnly="[userType.user]">
+                <ul>
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      (click)="toggleLike(postData.isLiked, postData.slug)"
+                    >
+                      <i
+                        class="fas icons-color fa-heart"
+                        [ngStyle]="{
+                          color: postData.isLiked ? '#dc3545' : 'icons-color'
+                        }"
+                      ></i>
+                      {{ postData.likeCount }}</a
+                    >
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)"
+                      ><i class="fas icons-color fa-comments"></i
+                      >{{ postData.comments.length }}</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      (click)="toggleSave(postData.isSaved, postData.slug)"
+                      ><i
+                        class="fas icons-color fa-bookmark"
+                        [ngStyle]="{
+                          color: postData.isSaved ? '#dc3545' : '#25eaef'
+                        }"
+                      ></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      (click)="copyContent(postData.slug)"
+                    >
+                      <i class="fas icons-color fa-share"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment-box shadow-sm">
+            <div *ngFor="let comment of postData.comments" class="comment">
+              <p>{{ comment.by.firstName }} {{ comment.by.lastName }}</p>
+           <div class="d-flex">
+            <app-comment [body]="comment.body"></app-comment>
+            <div *ngIf="by.email == comment.by.email" ngbDropdown class="d-inline-block ml-auto">
+              <button class="btn" id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button (click)="editComment(comment.slug)" ngbDropdownItem>
+                  Edit
+                </button>
+                <button (click)="deleteComment(comment.slug)" ngbDropdownItem>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+              <hr />
+            </div>
+            <div class="comment-input">
+              <tagify
+                [(ngModel)]="commentt"
+                [whitelist]="whiteList"
+                [settings]="mixedSettings"
+              >
+              </tagify>
+              <button
+                class="btn btn-comment"
+                (click)="postComment(postData.slug)"
+              >
+                {{ btnText }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row py-5 my-5 d-flex justify-content-center">
+      <div class="col-md-3">
+        <loader *ngIf="isLoader"></loader>
+      </div>
+    </div>
+  </div>
+</section>
+<app-create-report #report></app-create-report>
+<app-user-listing #listOfUser></app-user-listing>

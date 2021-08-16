@@ -1,0 +1,77 @@
+<section class="mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="profile-banner"></div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="profile-img">
+            <a href="javascript:void(0)" (click)="showImage.open()"><img [src]="user.image | image" alt="" /></a>
+            <h3>{{user.firstName}} {{user.lastName}}</h3>
+            <p class="text-purple my-3">{{user.bio ? user.bio : '-' }}</p>
+          </div>
+          <div class="profile-detail">
+            <p>{{user.degree.name}} at {{user.campus.name}}</p>
+            <a href="javascript:void(0)" *ngIf="user.socialLinks.facebook!=null && user.socialLinks.facebook !== ''"><i class="fab fa-facebook-f" width="30px" alt=""></i> {{user.socialLinks.facebook}}</a>
+            <a href="javascript:void(0)" *ngIf="user.socialLinks.instagram!=null && user.socialLinks.instagram !== ''"><i class="fab fa-instagram" width="30px" alt=""></i> {{user.socialLinks.instagram}}</a>
+            <a href="javascript:void(0)" *ngIf="user.socialLinks.twitter!=null && user.socialLinks.twitter !== ''"><i class="fab fa-twitter" width="30px" alt=""></i> {{user.socialLinks.twitter}}</a>
+            <a href="javascript:void(0)" *ngIf="user.socialLinks.tiktok!=null && user.socialLinks.tiktok !== ''"><img src="assets/images/tiktok.svg" width="20px" alt="" />{{user.socialLinks.tiktok}}</a>
+            <a href="javascript:void(0)" *ngIf="user.socialLinks.phone!=null && user.socialLinks.phone !== ''"><i class="fas fa-phone"  width="30px" alt=""></i> {{user.socialLinks.phone}}</a>
+            <a #email href="{{'mailto:'+user.email}}"><i class="fas fa-envelope"  width="30px" alt=""></i> {{user.email}}</a>
+            <a href="javascript:void(0)" (click)="edit.open()"><img src="../../../assets/images/pen-solid.svg" width="20px" alt="" />Edit personal information</a>
+            <a href="javascript:void(0)" (click)="changePassword.open()"><img src="../../../assets/images/pen-solid.svg" width="20px" alt="" />Change password</a>
+          </div>
+        </div>
+      </div>
+      <div *ngxPermissionsOnly="[userType.user]" class="col-md-8">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mt-4">
+          <li [ngbNavItem]="1">
+            <a ngbNavLink> Saved Posts</a>
+            <ng-template ngbNavContent>
+              <div class="row">
+                <div class="col-md-12">
+                  <post-list [url]="savedPostUrl"></post-list>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <a ngbNavLink> Communities</a>
+            <ng-template ngbNavContent>
+              <div class="row">
+                <div class="col-md-12">
+                 <app-community-list [url]="communityUrl" ></app-community-list>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="3">
+            <a ngbNavLink> My Posts</a>
+            <ng-template ngbNavContent>
+              <div class="row">
+                <div class="col-md-12">
+                  <post-list [url]="myPostUrl"></post-list>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="4">
+            <a ngbNavLink> My Communities</a>
+            <ng-template ngbNavContent>
+              <div class="row">
+                <div class="col-md-12">
+                  <app-community-list [isJoin]="isJoin" [url]="myCommunityUrl"></app-community-list>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+        </ul>
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-show-image [imageUrl]="user.image" #showImage></app-show-image>
+<app-edit-profile #edit></app-edit-profile>
+<app-change-password #changePassword></app-change-password>

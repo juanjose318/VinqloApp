@@ -1,0 +1,76 @@
+<div class="card shadow-sm main-profile-card">
+
+    <div class="client-card shadow-sm" *ngFor="let post of posts">
+        <div class="client-header">
+            <div>
+                <h6 [routerLink]="['/post', post.slug]" class="main-color mb-0" style="cursor: pointer">
+                    {{ post.title }}
+                </h6>
+                <small class="text-muted" [routerLink]="['/user-profile', post.by.email]">{{  post.by.firstName + " " + post.by.lastName }}
+          {{ post.time | date: "long" }}</small>
+
+      </div>
+
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn" id="dropdownBasic1" ngbDropdownToggle> <i class="fa fa-ellipsis-h" aria-hidden="true"></i> </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <span *ngIf="currentUser.email==post.by.email">
+            <button  ngbDropdownItem (click)="postCreate.editPost(post)"> Edit Post </button>
+            <button  ngbDropdownItem (click)="deletePost(post.slug)"> Delete Post </button>
+          </span>
+          <span *ngIf="currentUser.email!=post.by.email">
+            <button ngbDropdownItem (click)="report.open(0, post.slug)"> Report Post </button>
+            <button ngbDropdownItem (click)="report.open(1, post.by.email)"> Report User </button>
+            <button ngbDropdownItem (click)="report.open(2, post.community.slug)"> Report Community </button>
+          </span>
+
+        </div>
+      </div>
+    </div>
+    <p class="my-4">{{ post.body }}</p>
+    <div class="client-post">
+      <img
+        *ngIf="post.image"
+        [src]="post.image | image"
+        class="img-fluid"
+        alt=""
+      />
+    </div>
+    <div class="client-footer">
+      <div>
+        <span class="text-purple" *ngFor="let tag of post.tags; let i = index"
+          >{{ tag }} <span *ngIf="i + 1 !== post.tags.length">, </span>
+        </span>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <a href="javascript:void(0)"
+              (click)="toggleLike(post.isLiked, post.slug)"
+              ><i class="fas fa-heart" [ngStyle]="{ color: post.isLiked ? '#dc3545' : '#25eaef' }" ></i> {{ post.likeCount }}
+            </a >
+          </li>
+          <li>
+            <a href="javascript:void(0)" ><i class="fas icons-color fa-comments"></i> {{ post.comments.length }}</a >
+          </li>
+          <li>
+            <a href="javascript:void(0)"
+            (click)="toggleSave(post.isSaved, post.slug)"
+              ><i class="fas icons-color fa-bookmark"
+              [ngStyle]="{ color: post.isSaved ? '#dc3545' : '#25eaef' }"></i
+            ></a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" (click)="copyContent(post.slug)"> <i class="fas icons-color fa-share"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <no-content *ngIf="!isLoader && posts.length === 0" [label]="'No Posts here'" ></no-content>
+  <a align="center" style="margin-top: 10px;" href="javascript:void(0)" *ngIf="!isLoader&&hasNextPage" (click)="onLoadMoreClick()" ><h5> Load More <i class="fas fa-ellipsis-h"></i></h5>
+  </a>
+  <loader *ngIf="isLoader"></loader>
+</div>
+<app-create-report #report></app-create-report>
+<post-create #postCreate (update)="onUpdate($event)"></post-create>

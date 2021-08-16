@@ -1,0 +1,16 @@
+<ng-template #content >
+  <div class="modal-header">
+    <h4 class="modal-title text-purple" id="modal-basic-title">Why do you want to report this {{reportType}} ?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="input-field">
+      <label for="">  </label>
+      <textarea  type="text" [(ngModel)]="body"  class="form-control custom-border" placeholder="Enter Reason .." ></textarea>
+
+    </div>
+    <button class="btn mb-2 btn-main" [disabled]="body==''" (click)="onPost()">Report</button>
+  </div>
+</ng-template>

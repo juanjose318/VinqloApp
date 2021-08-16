@@ -1,0 +1,48 @@
+.search-field {
+  position: relative;
+}
+.search-field input {
+  border: none;
+  border-radius: 30px;
+  padding-left: 50px;
+}
+.search-field img {
+  position: absolute;
+  top: 9px;
+  left: 13px;
+  width: 22px;
+}
+.card-table {
+  border-radius: 20px;
+  border: none;
+}
+.custom-width {
+  width: 96%;
+  top: 45px;
+  border-radius: 0px 0px 20px 20px;
+  margin-right: 18px;
+}
+.card-accordian {
+  border-radius: 30px;
+  border: none;
+  padding: 10px 19px;
+  margin: 20px 0px;
+}
+
+::ng-deep .ng-select.ng-select-single .ng-select-container {
+  border: none;
+  border-radius: 30px;
+}
+.collapse-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 22px;
+}
+.collapse-toggle span {
+  color: #25eaef;
+}
+.accordian-list h5 {
+  cursor: pointer;
+}

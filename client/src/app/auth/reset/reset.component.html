@@ -1,0 +1,31 @@
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card py-4 shadow my-5">
+                    <div class="card-body text-center">
+                        <div class="logo mb-4">
+                            <h5 class="text-purple">Welcome to</h5>
+                            <img src="../../assets/images/logo-01.png" class="img-fluid" alt="" />
+                        </div>
+                        <div *ngIf="errors" class="alert alert-danger">
+                            <div *ngFor="let error of errors">{{ error }}</div>
+                        </div>
+                        <form autocomplete="off" [formGroup]="authForm">
+                            <div class="input-field">
+                                <input formControlName="password" type="password" class="form-control custom-border" placeholder="Password" />
+                                <errors [control]="f.password"></errors>
+                            </div>
+                            <div class="input-field">
+                                <input formControlName="confirmPassword" type="password" class="form-control custom-border" placeholder="Confirm Password" />
+                                <errors [control]="f.confirmPassword"></errors>
+                            </div>
+                            <button class="btn mb-2 btn-main" [disabled]="!authForm.valid" type="submit" (click)='onPost()'>Reset
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

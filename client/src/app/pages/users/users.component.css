@@ -1,0 +1,43 @@
+.search-field {
+  position: relative;
+}
+.search-field input {
+  border: none;
+  border-radius: 30px;
+  padding-left: 50px;
+}
+.search-field img {
+  position: absolute;
+  top: 9px;
+  left: 13px;
+  width: 22px;
+}
+.card-table {
+  border-radius: 20px;
+  border: none;
+}
+table thead tr th {
+  background: #f6f6f6;
+  border: none;
+  padding: 14px 24px;
+}
+tr td {
+  padding: 14px 24px;
+}
+table thead tr th:nth-child(1) {
+  border-radius: 18px 0px 0px 0px;
+}
+table thead tr th:nth-last-child(1) {
+  border-radius: 0px 18px 0px 0px;
+}
+
+::ng-deep .ng-select.ng-select-single .ng-select-container {
+  border: none;
+  border-radius: 30px;
+}
+::ng-deep .page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #00EEFF;
+  border-color: #00EEFF;
+}

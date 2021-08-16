@@ -1,0 +1,68 @@
+.o-container {
+  background: url("/assets/images/homepage.jpg") center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 20px);
+}
+
+.m-content-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  background-color: rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  padding: 2em;
+  margin: 2em;
+  border-radius: 20px;
+}
+
+.m-content-text {
+  width: 70%;
+}
+
+.a-big-title {
+  text-align: center;
+  font: 600 1.7em "Raleway", serif;
+  color: #91009b;
+  margin: 0.5em 0;
+}
+
+.a-paragraph {
+  text-align: center;
+  font: 400 1em "Open Sans", serif;
+  color: #021a68;
+}
+
+.a-image {
+  width: 70%;
+}
+
+.m-actions-wrapper {
+  width: 50%;
+  margin: 1em 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.a-button {
+  width: 100%;
+  font: 300 14px "Raleway", serif;
+  color: #fff;
+  background-color: #25eaef;
+  padding: 1em 0;
+  margin: 1em;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.a-button:hover {
+  transition: 250ms;
+  background-color: #91009b;
+}

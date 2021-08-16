@@ -1,0 +1,357 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+@import "~@yaireo/tagify/dist/tagify.css";
+body {
+  background-color: #dafdfe !important;
+  overflow-x: hidden;
+  font-family: 'Raleway', sans-serif;
+}
+.bg-dark {
+  background-color: #021a68;
+}
+.main-color {
+  color: #021a68;
+}
+.icons-color {
+  color: #25eaef;
+  margin-right: 5px;
+}
+.text-purple {
+  color: #91009b;
+}
+.btn-main {
+  background: #25eaef !important;
+  color: #fff !important;
+  display: block !important;
+  width: 100%;
+  border-radius: 30px !important;
+}
+a {
+  color: #021a68 !important;
+  text-decoration: none !important;
+}
+.accordion-toggle:after {
+  font-family: "FontAwesome"; /* essential to enable caret symbol*/
+  content: "\f00d"; /* adjust as needed, taken from font-awesome.css */
+  color: #25eaef;
+  font-size: 26px;
+  transition: all 0.3s;
+}
+.user-dropdown{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.user-dropdown img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: contain;
+  text-align: center;
+}
+.accordion-toggle.collapsed:after {
+  /* symbol for "collapsed" panels */
+  content: "\f0c9"; /* adjust as needed, taken from font-awesome.css */
+  color: #25eaef;
+  font-size: 26px;
+}
+
+nav {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: #fff;
+}
+.nav-list {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+.nav-link a i {
+  color: #021a68;
+  font-size: 26px;
+}
+.nav-main img {
+  width: 100px;
+}
+.accordian-main {
+  position: absolute;
+  right: 0%;
+  background: rgb(255, 255, 255);
+  padding: 19px;
+  z-index: 1;
+  border-radius: 0px 0px 20px 20px;
+}
+.custom-align {
+  position: absolute;
+  width: 32% !important;
+  box-shadow: 0px 8px 10px -9px #000000 !important;
+}
+.custom-align .accordian-menu {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.custom-align .accordian-menu .accordian-list {
+  width: 26%;
+  text-align: center;
+  margin-top: 12px;
+}
+.sidebar {
+  background-color: #6c6c6c;
+  height: 100%;
+}
+.sidebar-content {
+  list-style: none;
+  padding-left: 0px;
+}
+li.sidebar-list {
+  padding: 5px 35px;
+}
+.sidebar-list a {
+  color: #ffff !important;
+  transition: all 0.3s;
+}
+.sidebar-list:hover a {
+  color: #25eaef !important;
+}
+
+.o-footer {
+  display: block;
+  position: static;
+  background-color: #021a68;
+  width: 100%;
+  margin-top: 61px;
+}
+
+.m-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  width: 100%;
+  padding: 4%;
+  margin: auto;
+}
+
+.m-section {
+  width: 23%;
+}
+.m-section ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.a-footer-title,
+.a-footer-text {
+  color: #fff;
+}
+footer {
+  position: fixed;
+  bottom: 0px;
+}
+.a-footer-text {
+  font: 300 13px "Open Sans";
+  margin-bottom: 10px;
+}
+
+.a-footer-title {
+  font: 500 16px "Open Sans";
+  margin-bottom: 1em;
+}
+
+.a-footer-icon {
+  color: #fff;
+  margin-right: 4px;
+}
+.h-1000 {
+  height: 100%;
+}
+.user-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+  border: 1px solid lightgray;
+}
+.user-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 100px;
+  vertical-align: baseline;
+}
+.text-green {
+  color: #25eaef !important;
+}
+
+::ng-deep .nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  align-items: center !important;
+  justify-content: space-around !important;
+  background: #fff;
+  border-top-left-radius: 25px !important;
+  border-top-right-radius: 25px !important;
+}
+
+.search-field {
+  position: relative;
+}
+.search-field input {
+  border: none;
+  border-radius: 30px;
+  padding-left: 50px;
+}
+.search-field img {
+  position: absolute;
+  top: 9px;
+  left: 13px;
+  width: 22px;
+}
+.community {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 30px;
+  padding: 6px 16px 2px 16px;
+  margin: 20px 0px;
+  height: 40px;
+}
+.campus {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+}
+::ng-deep .dropdown-toggle::after {
+  display: none !important;
+}
+.dropdown-toggle::after{
+  display: none !important;
+}
+.card {
+  border: none;
+  border-radius: 15px;
+  /* padding: 30px; */
+}
+.card .client-card {
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px 0px;
+}
+.card .client-card .client-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.btn-join {
+  background-color: #f6f6f6;
+}
+.shadow-sm{
+  box-shadow: 3px 5px 18px -10px #000000 !important;
+}
+
+/* Modal */
+
+.custom-border {
+  border-left: 1px solid #1105c0 !important;
+  border-bottom: 1px solid #1105c0 !important;
+  border-top: 0px !important;
+  border-right: 0px !important;
+  border-radius: 0px !important;
+  color: #000e91;
+  margin-bottom: 30px;
+}
+::placeholder {
+  color: #000e91 !important;
+}
+.form-control:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Safari, Chrome, Opera */
+  -webkit-appearance: none;
+}
+.input-field {
+  position: relative;
+}
+.input-field .select-arrow {
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+}
+.input-field label {
+  font-size: 16px;
+  color: #021a68;
+  font-weight: 600;
+}
+.card {
+  border-radius: 15px;
+  border: none;
+}
+.modal-header {
+  border-bottom: 0px !important;
+}
+.modal-header button span {
+  background: #021a68;
+  color: transparent;
+  border-radius: 50%;
+  padding: 0px 7px 5px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  font-size: 28px;
+}
+
+button:focus {
+  outline: none !important;
+}
+.ng-select .ng-arrow-wrapper .ng-arrow {
+  border-color: #25eaef transparent transparent;
+}
+.ng-select.ng-select-opened > .ng-select-container .ng-arrow {
+  border-color: transparent transparent #25eaef;
+}
+.ng-select .ng-arrow-wrapper:hover .ng-arrow {
+  border-top-color: #07fbff;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-link {
+    display: block;
+    padding: 4px 9px;
+}
+  .nav-main img {
+    width: 70px;
+}
+.user-dropdown img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: contain;
+  text-align: center;
+}
+.nav-link a i {
+  color: #021a68;
+  font-size: 22px;
+}
+.custom-align {
+  width: 100% !important;
+}
+}

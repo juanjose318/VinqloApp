@@ -1,0 +1,165 @@
+.logo-img .logo{
+    width: 200px;
+}
+.card-slider{
+    margin: 60px 0px;
+    padding: 40px 0px;
+}
+.card-slider .card-body{
+    width: 80%;
+    text-align: center;
+    padding: 54px 20px;
+    background: #F7F7F7;
+    margin: 20px auto;
+    border-radius: 30px;
+}
+.card-slider .first-slide span{
+    font-size: 30px;
+    width: 50%;
+    font-weight: 600;
+    color: #021a68;
+}
+.slider-indicators{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 34px auto;
+    align-items: center;
+}
+.slider-indicators .previous-slide{
+    color: #91009B;
+    font-size: 22px;
+    cursor: pointer;
+}
+.slider-indicators .next-slide{
+    color: #91009B;
+    font-size: 22px;
+    cursor: pointer;
+}
+.slider-indicators ul{
+    list-style: none;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 0px;
+    padding-left: 10px;
+}
+.slider-indicators ul li{
+    color: #91009B;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.slider-indicators ul li.active{
+    color: #25EAEF;
+}
+.nav{
+    border-right: 1px solid #021a68;
+    width: 30%;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #E8E8E8;
+    padding: 15px 4px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 16px;
+
+}
+.nav-tab-list{
+    list-style: none;
+}
+.nav-tab-list li{
+    padding: 20px 5px;
+    text-align: left;
+}
+.nav-tab-list li.active{
+  background-color: #DAFDFE;
+  text-align: left;
+}
+.nav-tab-list li i{
+    margin-right: 10px;
+    font-size: 18px;
+}
+.nav-tab-list li span{
+    color: #021a68 ;
+    font-size: 16px;
+    font-weight: 600;
+}
+.nav-pills .nav-link{
+    padding: 15px 4px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 16px;
+}
+.nav-pills .nav-link i{
+    margin-right: 10px;
+    width: 20px;
+}
+.third-slide span{
+    font-size: 30px;
+    width: 50%;
+    font-weight: 600;
+    color: #021a68;
+}
+.third-slide span a{
+    color: #91009B !important;
+    border-bottom: 1px solid #91009B;
+}
+.tab-content-custom{
+    height: 350px;
+    overflow-y: auto;
+    width: 68%;
+}
+.nav-tab-list{
+    padding-left: 10px;
+}
+
+@media only screen and (max-width: 768px){
+    .nav {
+        border-right: 1px solid #021a68;
+        width: 50%;
+    }
+    .nav-pills .nav-link {
+        padding: 11px 4px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        padding-left: 5px;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: #fff;
+        background-color: #E8E8E8;
+        padding: 11px 4px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        padding-left: 5px;
+        margin-right: 1px;
+    }
+    .tab-content-custom{
+        margin-left: 0px;
+    }
+    .nav-tab-list {
+        list-style: none;
+        padding-left: 0px;
+    }
+    .nav-tab-list li {
+        padding: 6px 0px;
+    }
+    .nav-tab-list li i {
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    .nav-tab-list li span {
+        color: #021a68;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}

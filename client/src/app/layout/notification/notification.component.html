@@ -1,0 +1,37 @@
+<li ngbDropdown class="nav-item mx-2">
+  <a class="nav-link" ngbDropdownToggle href="javascript:void(0)">
+
+    <i class="fas fa-bell"></i>
+    <sup *ngIf="result && result.totalDocs && result.totalDocs !== 0" class="unreadCount">{{result.totalDocs}}</sup>
+
+  </a>
+
+  <ul class="dropdown-menu dropdown-menu-right" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <li class="head"><span>Notifications</span> <a (click)="onMarkALLClick()" href="javascript:void(0)">Mark all as read</a> </li>
+    <li>
+      <ul class="w-17" *ngIf="result && result.docs && result.docs.length > 0; else noData">
+        <li ngbDropdownItem *ngFor="let noti of result.docs" (click)="onClickNotification(noti)" [ngClass]="{'read': !noti.isRead}" >
+          <div class="media ">
+            <a href="javascript:void(0)"><div *ngIf="noti.type !== 1" class="user-image">
+              <img [src]="noti.user.image | image" alt="Generic placeholder image">
+            </div>
+            <div *ngIf="noti.type == 1" >
+              <i class="fas fa-wrench fa-2x"></i>
+            </div>
+            <div class="media-body ml-3">
+              <p class="mt-0 mb-0">{{noti.title}}</p>
+            </div></a>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <ng-template #noData>
+      <p class="text-center main-color py-5 text-gold">There is no notification yet</p>
+    </ng-template>
+    <!-- <li class="foot"><span>Footer here</span></li> -->
+
+  </ul>
+
+</li>
+
+

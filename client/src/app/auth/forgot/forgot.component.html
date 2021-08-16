@@ -1,0 +1,29 @@
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card py-4 shadow my-5">
+                    <div class="card-body text-center">
+                        <div class="logo mb-4">
+                            <h5 class="text-purple">Welcome to</h5>
+                            <img src="../../assets/images/logo-01.png" class="img-fluid" alt="" />
+                        </div>
+                        <div *ngIf="errors" class="alert alert-danger">
+                            <div *ngFor="let error of errors">{{ error }}</div>
+                        </div>
+                        <form autocomplete="off" [formGroup]="authForm" (ngSubmit)="submitForm()">
+                            <div class="input-field">
+                                <input #id formControlName="email" type="email" class="form-control custom-border" placeholder="Email" />
+                                <errors [control]="f.email"></errors>
+                            </div>
+                            <button class="btn mb-2 btn-main" [disabled]="!authForm.valid" type="submit" >
+                Send Email
+              </button>
+                            <a [routerLink]="['/auth']">Sign In</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

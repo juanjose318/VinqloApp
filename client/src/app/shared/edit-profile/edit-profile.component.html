@@ -1,0 +1,122 @@
+<ng-template #content>
+  <div class="modal-header">
+    <h4 class="modal-title text-purple" id="modal-basic-title">Edit Profile</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <div class="form-group">
+        <div class="input-field">
+          <label for=""> First Name </label>
+          <input
+            type="text"
+            formControlName="firstName"
+            class="form-control custom-border"
+            placeholder="First Name"
+          />
+          <errors [control]="f.firstName"></errors>
+        </div>
+        <div class="input-field">
+          <label for=""> Last Name</label>
+          <input
+            type="text"
+            formControlName="lastName"
+            formControlName="lastName"
+            class="form-control custom-border"
+            placeholder="Last Name"
+          />
+          <errors [control]="f.lastName"></errors>
+        </div>
+        <div class="input-field mt-4">
+          <label for="">Select Campus </label>
+          <ng-select
+            formControlName="campus"
+            (change)="nullDegree()"
+            [clearable]="false"
+            [items]="campuses"
+            bindValue="slug"
+            bindLabel="name"
+          ></ng-select>
+          <errors [control]="f.campus"></errors>
+        </div>
+        <div class="input-field mt-4">
+          <label for="">Select Degree </label>
+          <ng-select
+            formControlName="degree"
+            [items]="degrees"
+            [clearable]="false"
+            bindValue="slug"
+            bindLabel="name"
+          ></ng-select>
+          <errors [control]="f.degree"></errors>
+        </div>
+        <div class="input-field">
+          <label for=""> Bio </label>
+          <textarea
+            formControlName="bio"
+            formControlName="bio"
+            name=""
+            class="form-control"
+            placeholder="What do you want to share"
+            id=""
+            cols="30"
+            rows="3"
+          ></textarea>
+          <errors [control]="f.bio"></errors>
+        </div>
+       
+        <br>
+        <h5 class="modal-title text-purple" id="modal-basic-title">Contact Information</h5>
+        <form [formGroup]="socialLinks">
+         
+          <div class="input-field mt-4">
+            <label for=""> Phone</label>
+            <input
+              type="text"
+              formControlName="phone"
+              class="form-control custom-border"
+              placeholder="Phone Number"
+            />
+            <errors [control]="f.phone"></errors>
+          </div>
+        
+            <div class="input-field mt-4">
+              <label for=""> Instagram</label>
+              <input
+                type="text"
+                formControlName="instagram"
+                class="form-control custom-border"
+                placeholder="@Instagram username"
+              />
+            </div>
+            <div class="input-field mt-4">
+              <label for=""> Facebook</label>
+              <input
+                type="text"
+                formControlName="facebook"
+                class="form-control custom-border"
+                placeholder="facebook username"
+              />
+            </div>
+            <div class="input-field mt-4">
+              <label for=""> Twitter</label>
+              <input type="text" formControlName="twitter" class="form-control custom-border" placeholder="@Twitter id" />
+            </div>
+            <div class="input-field mt-4">
+              <label for=""> Tiktok</label>
+              <input type="text" formControlName="tiktok" class="form-control custom-border" placeholder="Tiktok username" />
+            </div>
+          
+        </form>
+
+        <div class="input-field mt-3">
+          <label for=""> Upload Image</label>
+          <upload-img [control]="f.image"></upload-img>
+        </div>
+        <button class="btn mb-2 btn-main" (click)="onPost()">Post</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

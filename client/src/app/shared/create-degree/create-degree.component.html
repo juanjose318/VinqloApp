@@ -1,0 +1,23 @@
+<ng-template #content >
+  <div class="modal-header">
+    <h4 class="modal-title text-purple" id="modal-basic-title">{{campus.name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="input-field">
+      <input type="text" [(ngModel)]="name" (keyup.enter)="createDegree(campus.slug)" class="form-control custom-border" placeholder="Enter Degree name .." />
+    </div>
+  </div>
+  <div  class=" px-5 shadow-sm">
+    <div *ngIf="!isLoader" class="row">
+      <div *ngFor="let degree of campus.degrees" class="card-campus col-md-6">
+        <a ><h4  class="main-color">{{degree.name}}</h4></a>
+        <a style="cursor:pointer;" (click)="listOfUser.openEntity(degree)"><p><i class="fas icons-color fa-users"></i> {{degree.members.length}}</p></a>
+      </div>
+    </div>
+    <loader *ngIf="isLoader"></loader>
+  </div>
+</ng-template>
+<app-user-listing #listOfUser></app-user-listing>
